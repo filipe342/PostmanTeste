@@ -35,7 +35,9 @@ jobs:
       run: newman run ServeRest.postman_collection.json -r html --reporter-html-export report.html
 
     - name: Copy report to Report folder
-      run: mv report.html Report/
+      run: |
+        mkdir -p Report
+        mv report.html Report/
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
