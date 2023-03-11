@@ -15,15 +15,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Cache node_modules
-      id: cache-dependencies
+    - name: Cache node modules
       uses: actions/cache@v2
       with:
         path: node_modules
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-node-
-          
+
     - name: Install dependencies
       run: |
         sudo apt-get update
@@ -34,10 +33,3 @@ jobs:
 
     - name: Run Postman tests
       run: newman run ServeRest.postman_collection.json
-
-    - name: Save cache
-      if: steps.cache-dependencies.outputs.cache-hit != 'true'
-      uses: actions/cache@v2
-      with:
-        path: node_modules
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
