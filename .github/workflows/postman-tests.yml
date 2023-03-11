@@ -1,0 +1,25 @@
+name: Postman Tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  postman:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y nodejs npm
+
+    - name: Install Newman
+      run: npm install -g newman
+
+    - name: Run Postman tests
+      run: newman run ServeRest.postman_collection.json
