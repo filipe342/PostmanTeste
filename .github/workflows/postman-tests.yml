@@ -25,25 +25,3 @@ jobs:
 
     - name: Run Postman tests
       run: newman run ServeRest.postman_collection.json
-
-    - name: Send email with test results
-      uses: benmatselby/action-email@v0.3.3
-      with:
-        to: ${{ secrets.MY_EMAIL_ADDRESS }}
-        subject: Postman tests results
-        body: |
-          Olá,
-          
-          Aqui estão os resultados dos testes do Postman:
-          
-          {{#each failures}}
-            - {{message}}
-          {{/each}}
-          
-          Atenciosamente,
-          Git Actions
-      env:
-        EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
-        EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
-        EMAIL_USER: ${{ secrets.EMAIL_USER }}
-        EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
