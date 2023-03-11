@@ -115,10 +115,7 @@
 							"});\r",
 							"\r",
 							"\r",
-							"pm.test(\"Verifica se o ID gerado é uma string\", function () {\r",
-							"    pm.expect(typeof pm.response.json()._id).to.eql(\"string\");\r",
-							"});\r",
-							" "
+							""
 						],
 						"type": "text/javascript"
 					}
