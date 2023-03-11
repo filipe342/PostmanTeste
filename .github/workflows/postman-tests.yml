@@ -29,7 +29,7 @@ jobs:
     - name: Send email with test results
       uses: benmatselby/action-email@v0.3.3
       with:
-        to: filipecardosogabriel20@gmail.com
+        to: filipecardosogabriel@gmail.com
         subject: Postman tests results
         body: |
           Olá,
