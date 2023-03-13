@@ -32,16 +32,4 @@ jobs:
       run: npm install -g newman
 
     - name: Run Postman tests
-      run: newman run ServeRest.postman_collection.json -r html --reporter-html-export report.html
-
-    - name: Copy report to Report folder
-      run: |
-        mkdir -p Report
-        mv report.html Report/
-
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: Report
-        path: Report/
-        if-no-files-found: warn
+      run: newman run ServeRest.postman_collection.json
